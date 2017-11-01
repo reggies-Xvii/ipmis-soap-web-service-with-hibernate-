@@ -1,0 +1,5 @@
+org\tmea\unido\ipmis\data\entity\Medicine.class
+org\tmea\unido\ipmis\data\service\MedicineService.class
+org\tmea\unido\ipmis\data\dao\MedicineDao.class
+org\tmea\unido\ipmis\data\dao\MedicineDaoInterface.class
+org\tmea\unido\ipmis\test\Test.class
