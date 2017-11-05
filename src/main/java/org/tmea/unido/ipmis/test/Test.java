@@ -1,5 +1,7 @@
 package org.tmea.unido.ipmis.test;
 
+import java.util.List;
+
 import org.tmea.unido.ipmis.data.entity.Medicine;
 import org.tmea.unido.ipmis.data.service.MedicineService;
 
@@ -9,10 +11,29 @@ public class Test {
 		
 		MedicineService medicineService = new MedicineService();
 		
-		Medicine medicine = new Medicine(3, "Malariaquin","Quinine", "SKL", "Karundi", "Swallow");
+		Medicine medicine = new Medicine(5, "Malariaquin","Quinine", "SKL", "Karundi", "Swallow");
 		System.out.println("Persisting medicine to database...");
 		medicineService.persist(medicine);
 		System.out.println("Medicine persisted ");
+		
+		List<Medicine> med = medicineService.findAll();
+		
+		for(Medicine m : med){
+			System.out.println(m.toString());
+		}
+		
+		Medicine medicine2 = medicineService.findById((long) 131072);
+		System.out.println("Getting values by id...");
+		String genericName = medicine2.getGenericName();
+		String manufacturer = medicine2.getManufacturer();
+		
+		List<Medicine> meds = medicineService.search("Panadol");
+		for(Medicine m : meds){
+			System.out.println(">>>Product Trade Name is: " + m.getProductTradeName());
+		}
+		
+		
+		System.out.println("The generic name is: " + genericName + " and manufacturer is: " + manufacturer);
 
 	}
 

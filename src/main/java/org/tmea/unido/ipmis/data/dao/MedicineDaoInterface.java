@@ -18,4 +18,6 @@ public void persist(T entity);
 	
 	public void deleteAll();
 	
+	public List<T> search(String search);
+	
 }

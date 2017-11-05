@@ -1,5 +1,8 @@
+org\tmea\unido\ipmis\data\dao\MedicineDao.class
+org\tmea\unido\ipmis\test\Test.class
+Exporter.class
 org\tmea\unido\ipmis\data\entity\Medicine.class
 org\tmea\unido\ipmis\data\service\MedicineService.class
-org\tmea\unido\ipmis\data\dao\MedicineDao.class
+MedicineService.class
+org\tmea\unido\ipmis\ws\MedicineWs.class
 org\tmea\unido\ipmis\data\dao\MedicineDaoInterface.class
-org\tmea\unido\ipmis\test\Test.class

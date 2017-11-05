@@ -54,4 +54,11 @@ public class MedicineService {
 	public MedicineDao medicineDao(){
 		return medicineDao;
 	}
+	
+	public List<Medicine> search(String result){
+		medicineDao.openCurrentSession();
+		List<Medicine> medicines = medicineDao.search(result);
+		medicineDao.closeCurrentSession();
+		return medicines;
+	}
 }

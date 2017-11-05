@@ -2,6 +2,7 @@ package org.tmea.unido.ipmis.data.dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -18,7 +19,7 @@ public class MedicineDao implements MedicineDaoInterface<Medicine, String> {
 	public MedicineDao() {
 
 	}
-	
+
 	public Session openCurrentSession() {
 		currentSession = getSessionFactory().openSession();
 		return currentSession;
@@ -29,16 +30,16 @@ public class MedicineDao implements MedicineDaoInterface<Medicine, String> {
 		currentTransaction = currentSession.beginTransaction();
 		return currentSession;
 	}
-	
+
 	public void closeCurrentSession() {
 		currentSession.close();
 	}
-	
+
 	public void closeCurrentSessionwithTransaction() {
 		currentTransaction.commit();
 		currentSession.close();
 	}
-	
+
 	private static SessionFactory getSessionFactory() {
 		Configuration configuration = new Configuration().configure();
 		StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder()
@@ -63,7 +64,6 @@ public class MedicineDao implements MedicineDaoInterface<Medicine, String> {
 		this.currentTransaction = currentTransaction;
 	}
 
-
 	public void persist(Medicine entity) {
 		getCurrentSession().save(entity);
 	}
@@ -73,7 +73,7 @@ public class MedicineDao implements MedicineDaoInterface<Medicine, String> {
 	}
 
 	public Medicine findById(String id) {
-		Medicine medicine = (Medicine)getCurrentSession().get(Medicine.class, id);
+		Medicine medicine = (Medicine) getCurrentSession().get(Medicine.class, id);
 		return medicine;
 	}
 
@@ -83,19 +83,27 @@ public class MedicineDao implements MedicineDaoInterface<Medicine, String> {
 
 	public List<Medicine> findAll() {
 		@SuppressWarnings("unchecked")
-		List<Medicine> medicine = (List<Medicine>)getCurrentSession().createQuery("from classification").list();
+		List<Medicine> medicine = (List<Medicine>) getCurrentSession().createQuery("from Medicine").list();
 		return medicine;
 	}
 
 	public void deleteAll() {
 		List<Medicine> entityList = findAll();
-		for(Medicine entity: entityList){
+		for (Medicine entity : entityList) {
 			delete(entity);
 		}
 	}
 
 	public Medicine findById(Long id) {
-		Medicine medicine = (Medicine)getCurrentSession().get(Medicine.class, id);
+		Medicine medicine = (Medicine) getCurrentSession().get(Medicine.class, id);
+		return medicine;
+	}
+
+	public List<Medicine> search(String result) {
+		Query q = getCurrentSession().createQuery("from Medicine a where a.productTradeName = :result");
+		@SuppressWarnings("unchecked")
+		List<Medicine> medicine = q.setParameter("result", result).list();
+		//List<Medicine> medicine = (List<Medicine>)getCurrentSession().createQuery("from Medicine a where a.product_trade_name = result").list();
 		return medicine;
 	}
 
