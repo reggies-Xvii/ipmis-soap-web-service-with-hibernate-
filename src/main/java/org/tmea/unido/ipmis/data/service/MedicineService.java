@@ -61,4 +61,18 @@ public class MedicineService {
 		medicineDao.closeCurrentSession();
 		return medicines;
 	}
+	
+	public List<Medicine> searchUg(String result){
+		medicineDao.openCurrentSession();
+		List<Medicine> medicines = medicineDao.searchUg(result);
+		medicineDao.closeCurrentSession();
+		return medicines;
+	}
+	
+	public List<Medicine> searchTz(String result){
+		medicineDao.openCurrentSession();
+		List<Medicine> medicines = medicineDao.searchTz(result);
+		medicineDao.closeCurrentSession();
+		return medicines;
+	}
 }

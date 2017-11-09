@@ -20,4 +20,8 @@ public void persist(T entity);
 	
 	public List<T> search(String search);
 	
+	public List<T> searchUg(String search);
+	
+	public List<T> searchTz(String search);
+	
 }

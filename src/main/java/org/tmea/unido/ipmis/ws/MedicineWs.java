@@ -37,4 +37,18 @@ public class MedicineWs {
 		List<Medicine> med = medicineService.search(result);
 		return med;
 	}
+	
+	@WebMethod
+	public List<Medicine> getSearchResultUganda(String result){
+		MedicineService medicineService = new MedicineService();
+		List<Medicine> med = medicineService.searchUg(result);
+		return med;
+	}
+	
+	@WebMethod
+	public List<Medicine> getSearchResultTanzania(String result){
+		MedicineService medicineService = new MedicineService();
+		List<Medicine> med = medicineService.searchTz(result);
+		return med;
+	}
 }

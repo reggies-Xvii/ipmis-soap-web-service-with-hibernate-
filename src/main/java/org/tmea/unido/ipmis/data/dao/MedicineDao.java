@@ -100,10 +100,33 @@ public class MedicineDao implements MedicineDaoInterface<Medicine, String> {
 	}
 
 	public List<Medicine> search(String result) {
-		Query q = getCurrentSession().createQuery("from Medicine a where a.productTradeName = :result");
+		result = result.toLowerCase();
+		Query q = getCurrentSession().createQuery("from Medicine a where a.countryRegistered ='Kenya' AND (lower(a.productTradeName) = :result or lower(a.genericName) = :result)");
+		q.setParameter("result", result.toLowerCase());
+		//Query query = session.createQuery("from DataOrganization dataOrg where lower(dataOrg.poolName) like :poolName");
 		@SuppressWarnings("unchecked")
 		List<Medicine> medicine = q.setParameter("result", result).list();
 		//List<Medicine> medicine = (List<Medicine>)getCurrentSession().createQuery("from Medicine a where a.product_trade_name = result").list();
+		return medicine;
+	}
+	
+	public List<Medicine> searchUg(String result) {
+		result = result.toLowerCase();
+		String country = "Uganda";
+		Query q = getCurrentSession().createQuery("from Medicine a where a.countryRegistered ='Uganda' AND (lower(a.productTradeName) = :result or lower(a.genericName) = :result)");
+		q.setParameter("result", result.toLowerCase());
+		@SuppressWarnings("unchecked")
+		List<Medicine> medicine = q.setParameter("result", result).list();
+		return medicine;
+	}
+	
+	public List<Medicine> searchTz(String result) {
+		result = result.toLowerCase();
+		String country = "Tanzania";
+		Query q = getCurrentSession().createQuery("from Medicine a where a.countryRegistered ='Tanzania' AND (lower(a.productTradeName) = :result or lower(a.genericName) = :result)");
+		q.setParameter("result", result.toLowerCase());
+		@SuppressWarnings("unchecked")
+		List<Medicine> medicine = q.setParameter("result", result).list();
 		return medicine;
 	}
 

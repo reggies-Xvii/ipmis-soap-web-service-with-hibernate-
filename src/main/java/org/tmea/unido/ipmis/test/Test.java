@@ -11,7 +11,7 @@ public class Test {
 		
 		MedicineService medicineService = new MedicineService();
 		
-		Medicine medicine = new Medicine(6788, "Malariaquin","Quinine", "SKL", "Karundi", "Swallow", "aaa", "xxx", "askjfs", "adsfs", "xyz", "test", "khadds", "jahsda", "asfjlasjf", "asldfjs", "aljfaljf", "LastOne");
+		Medicine medicine = new Medicine(6788666, "Malariaquin","Quinine", "SKL", "Karundi", "Swallow", "aaa", "xxx", "askjfs", "adsfs", "xyz", "test", "khadds", "jahsda", "asfjlasjf", "asldfjs", "aljfaljf", "LastOne","Kenya");
 		System.out.println("Persisting medicine to database...");
 		medicineService.persist(medicine);
 		System.out.println("Medicine persisted ");

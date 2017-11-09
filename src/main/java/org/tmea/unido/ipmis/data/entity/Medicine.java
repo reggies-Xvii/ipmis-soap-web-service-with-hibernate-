@@ -42,7 +42,7 @@ public class Medicine implements Serializable {
 	@Column(name = "strength")
 	private String strength;
 
-	@Column(name = "country_of_manufaacturer")
+	@Column(name = "country_of_manufacturer")
 	private String countryOfOrigin;
 
 	@Column(name = "ephmra_code_level1")
@@ -75,6 +75,9 @@ public class Medicine implements Serializable {
 	@Column(name = "nfc_code3_description")
 	private String nfcCodeThreeDescription;
 
+	@Column(name = "country_registered")
+	private String countryRegistered;
+
 	public Medicine() {
 
 	}
@@ -83,7 +86,8 @@ public class Medicine implements Serializable {
 			String intendedUse, String strength, String countryOfOrigin, String atcCodeLevelOne,
 			String atcCodeLevelOneDescription, String atcCodeLevelTwo, String atcCodeLevelTwoDescription,
 			String atcCodeLevelThree, String atcCodeLevelThreeDescription, String atcCodeLevelFour,
-			String atcCodeLevelFourDescription, String nfcCodeThree, String nfcCodeThreeDescription) {
+			String atcCodeLevelFourDescription, String nfcCodeThree, String nfcCodeThreeDescription,
+			String countryRegistered) {
 		this.id = id;
 		this.productTradeName = productTradeName;
 		this.genericName = genericName;
@@ -102,13 +106,15 @@ public class Medicine implements Serializable {
 		this.atcCodeLevelFourDescription = atcCodeLevelFourDescription;
 		this.nfcCodeThree = nfcCodeThree;
 		this.nfcCodeThreeDescription = nfcCodeThreeDescription;
+		this.countryRegistered = countryRegistered;
 	}
 
 	public Medicine(String productTradeName, String genericName, String manufacturer, String localAgent,
 			String intendedUse, String strength, String countryOfOrigin, String atcCodeLevelOne,
 			String atcCodeLevelOneDescription, String atcCodeLevelTwo, String atcCodeLevelTwoDescription,
 			String atcCodeLevelThree, String atcCodeLevelThreeDescription, String atcCodeLevelFour,
-			String atcCodeLevelFourDescription, String nfcCodeThree, String nfcCodeThreeDescription) {
+			String atcCodeLevelFourDescription, String nfcCodeThree, String nfcCodeThreeDescription,
+			String countryRegistered) {
 		this.productTradeName = productTradeName;
 		this.genericName = genericName;
 		this.manufacturer = manufacturer;
@@ -126,6 +132,7 @@ public class Medicine implements Serializable {
 		this.atcCodeLevelFourDescription = atcCodeLevelFourDescription;
 		this.nfcCodeThree = nfcCodeThree;
 		this.nfcCodeThreeDescription = nfcCodeThreeDescription;
+		this.countryRegistered = countryRegistered;
 	}
 
 	public long getId() {
@@ -272,6 +279,14 @@ public class Medicine implements Serializable {
 		this.nfcCodeThreeDescription = nfcCodeThreeDescription;
 	}
 
+	public String getCountryRegistered() {
+		return countryRegistered;
+	}
+
+	public void setCountryRegistered(String countryRegistered) {
+		this.countryRegistered = countryRegistered;
+	}
+
 	@Override
 	public String toString() {
 		return "Medicine [id=" + id + ", productTradeName=" + productTradeName + ", genericName=" + genericName
@@ -282,7 +297,10 @@ public class Medicine implements Serializable {
 				+ ", atcCodeLevelThree=" + atcCodeLevelThree + ", atcCodeLevelThreeDescription="
 				+ atcCodeLevelThreeDescription + ", atcCodeLevelFour=" + atcCodeLevelFour
 				+ ", atcCodeLevelFourDescription=" + atcCodeLevelFourDescription + ", nfcCodeThree=" + nfcCodeThree
-				+ ", nfcCodeThreeDescription=" + nfcCodeThreeDescription + "]";
+				+ ", nfcCodeThreeDescription=" + nfcCodeThreeDescription + ", countryRegistered=" + countryRegistered
+				+ "]";
 	}
+
+	
 
 }
